@@ -1,9 +1,3 @@
-/* server.c - tiny HTTP server in C.
- *   GET /api/campus                      -> buildings + walkways as JSON
- *   GET /api/route?from=0&to=5&algo=dij&acc=0&blocked=3,7
- *                                        -> route computed by dijkstra.c / bfs.c
- *   GET anything else                    -> static file from web/
- * Uses POSIX sockets (macOS / Linux / WSL). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,7 +14,6 @@
 #define BUF_SIZE 8192
 static const char *WEB_ROOT = "web";
 
-/* ---------- low-level helpers ---------- */
 static void sendAll(int fd, const char *buf, size_t len) {
     while (len > 0) {
         ssize_t k = write(fd, buf, len);
@@ -45,7 +38,6 @@ static void sendJson(int fd, int code, const char *status, const char *json) {
     sendResponse(fd, code, status, "application/json", json, strlen(json));
 }
 
-/* Read ?key=value from a query string. Returns 1 if found. */
 static int getParam(const char *query, const char *key, char *out, size_t size) {
     size_t kl = strlen(key);
     const char *p = query;
@@ -63,7 +55,6 @@ static int getParam(const char *query, const char *key, char *out, size_t size) 
     return 0;
 }
 
-/* ---------- API: /api/campus ---------- */
 static void apiCampus(int fd) {
     static char buf[BUF_SIZE];
     int off = 0;
@@ -82,7 +73,6 @@ static void apiCampus(int fd) {
     sendJson(fd, 200, "OK", buf);
 }
 
-/* ---------- API: /api/route ---------- */
 static void apiRoute(int fd, const char *query) {
     char v[256];
     if (!getParam(query, "from", v, sizeof v)) { sendJson(fd, 400, "Bad Request", "{\"error\":\"missing from\"}"); return; }
@@ -120,7 +110,6 @@ static void apiRoute(int fd, const char *query) {
     sendJson(fd, 200, "OK", buf);
 }
 
-/* ---------- static files from web/ ---------- */
 static const char *mimeType(const char *path) {
     const char *ext = strrchr(path, '.');
     if (!ext) return "application/octet-stream";
@@ -155,7 +144,6 @@ static void serveFile(int fd, const char *urlPath) {
     free(data);
 }
 
-/* ---------- request handling ---------- */
 static void handleClient(int fd) {
     char req[BUF_SIZE];
     ssize_t r = read(fd, req, sizeof req - 1);
@@ -189,7 +177,7 @@ int startServer(int port) {
     struct sockaddr_in addr;
     memset(&addr, 0, sizeof addr);
     addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);   /* this computer only */
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);   
     addr.sin_port = htons((unsigned short)port);
 
     if (bind(srv, (struct sockaddr *)&addr, sizeof addr) < 0) { perror("bind"); return 1; }
