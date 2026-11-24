@@ -1,4 +1,3 @@
-/* blocking.c - block / unblock a walkway (construction, flooding, ...) */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"

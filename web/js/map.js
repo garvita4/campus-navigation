@@ -1,5 +1,3 @@
-// map.js - draws the campus graph as SVG and highlights routes
-
 let edgeEls = [];
 let nodeEls = [];
 

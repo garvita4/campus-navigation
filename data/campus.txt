@@ -1,10 +1,3 @@
-# Campus map data
-# N|building name|x|y        (x,y = position on the web map, 700x450 canvas)
-# E|from|to|distance in m|stairs (1 = has stairs, 0 = step-free)
-# NOTE: distances are ESTIMATES - replace them with real measurements.
-# The Library is on the 2nd floor and everything else is on the ground floor,
-# so every walkway that touches the Library has stairs (flag = 1).
-
 N|Gate 1|520|405
 N|Gate 2|270|405
 N|Parking Area|400|325

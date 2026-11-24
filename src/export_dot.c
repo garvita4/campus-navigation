@@ -1,4 +1,3 @@
-/* export_dot.c - export the campus graph for Graphviz */
 #include <stdio.h>
 #include "campus.h"
 #include "export_dot.h"

@@ -1,4 +1,3 @@
-/* planner.c - multi-stop trip planner: best order to visit up to 5 stops */
 #include <stdio.h>
 #include <string.h>
 #include "campus.h"
@@ -9,11 +8,10 @@
 
 #define MAX_STOPS 5
 
-static int D[MAX_STOPS + 2][MAX_STOPS + 2];   /* pairwise shortest distances */
+static int D[MAX_STOPS + 2][MAX_STOPS + 2];
 static int ord[MAX_STOPS + 2], best[MAX_STOPS + 2];
 static int bestCost, K;
 
-/* Try every order of the K stops (point 0 = start, point K+1 = destination) */
 static void permute(int pos, int cost, int usedMask) {
     if (pos == K + 1) {
         int last = D[ord[K]][K + 1];

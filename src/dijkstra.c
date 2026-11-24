@@ -1,4 +1,3 @@
-/* dijkstra.c - shortest route by distance (the main requirement) */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"
@@ -11,14 +10,12 @@ int dijkstra(int src, int dst, int path[], int *len) {
     dist[src] = 0;
 
     for (int c = 0; c < n; c++) {
-        /* pick the unvisited building with the smallest distance */
         int u = -1, min = INF;
         for (int i = 0; i < n; i++)
             if (!vis[i] && dist[i] < min) { min = dist[i]; u = i; }
         if (u == -1) break;
         vis[u] = 1;
 
-        /* relax all usable walkways from u */
         for (int v = 0; v < n; v++)
             if (usable(u, v) && !vis[v] && dist[u] + w[u][v] < dist[v]) {
                 dist[v] = dist[u] + w[u][v];
@@ -27,7 +24,7 @@ int dijkstra(int src, int dst, int path[], int *len) {
     }
     if (dist[dst] == INF) return -1;
 
-    if (path && len) {                       /* rebuild path from parent[] */
+    if (path && len) {
         int tmp[MAXN], c = 0;
         for (int v = dst; v != -1; v = parent[v]) tmp[c++] = v;
         *len = c;

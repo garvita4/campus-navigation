@@ -1,4 +1,3 @@
-/* compare.c - Dijkstra vs BFS side by side */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"

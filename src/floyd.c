@@ -1,4 +1,3 @@
-/* floyd.c - all-pairs shortest distances (Floyd-Warshall) */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"
@@ -11,7 +10,6 @@ void floydMenu(void) {
         for (int j = 0; j < n; j++)
             d[i][j] = (i == j) ? 0 : (usable(i, j) ? w[i][j] : INF);
 
-    /* try every building k as an intermediate stop */
     for (int k = 0; k < n; k++)
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)

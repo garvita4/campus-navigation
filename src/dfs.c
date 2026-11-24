@@ -1,4 +1,3 @@
-/* dfs.c - explore the campus depth-first */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"

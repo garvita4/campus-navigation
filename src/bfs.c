@@ -1,4 +1,3 @@
-/* bfs.c - route with the fewest walkways (ignores distances) */
 #include "campus.h"
 #include "bfs.h"
 

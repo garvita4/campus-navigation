@@ -1,4 +1,3 @@
-/* utils.c - colours, case-insensitive helpers and user input */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,11 +42,10 @@ int icontains(const char *hay, const char *needle) {
 int readInt(const char *prompt) {
     char b[32];
     printf("%s", prompt);
-    if (!fgets(b, sizeof b, stdin)) return -99;      /* EOF */
+    if (!fgets(b, sizeof b, stdin)) return -99;
     return atoi(b);
 }
 
-/* Accepts a building number OR a (partial) name. Returns index or -1. */
 int askBuilding(const char *prompt) {
     char buf[64];
     printf("%s (name or number): ", prompt);

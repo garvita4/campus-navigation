@@ -1,5 +1,3 @@
-// app.js - page logic: controls, results panel, events
-
 import { getCampus, getRoute } from "./api.js";
 import { drawMap, paintRoute } from "./map.js";
 
@@ -7,8 +5,8 @@ const $ = s => document.querySelector(s);
 const from = $("#from"), to = $("#to"), out = $("#out");
 const blocked = new Set();
 let campus = null;
-let pick = 1;          // which dropdown the next map click fills
-let latest = 0;        // ignores out-of-date responses
+let pick = 1;
+let latest = 0;
 
 async function init() {
   try {

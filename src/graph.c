@@ -1,4 +1,3 @@
-/* graph.c - campus graph storage and loading from data/campus.txt */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,7 +17,6 @@ int findExact(const char *name) {
     return -1;
 }
 
-/* A walkway is usable if it exists, is open, and (accessible mode) has no stairs */
 int usable(int u, int v) {
     return w[u][v] && !blocked[u][v] && !(accessibleMode && stairs[u][v]);
 }
@@ -32,7 +30,6 @@ void blockEdge(int id) {
     blocked[edgeA[id]][edgeB[id]] = blocked[edgeB[id]][edgeA[id]] = 1;
 }
 
-/* File format:  N|name|x|y     and     E|from|to|metres|stairs */
 int loadCampus(const char *file) {
     FILE *f = fopen(file, "r");
     if (!f) return 0;

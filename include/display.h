@@ -1,4 +1,3 @@
-/* display.h - printing helpers for the terminal interface */
 #ifndef DISPLAY_H
 #define DISPLAY_H
 

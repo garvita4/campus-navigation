@@ -1,4 +1,3 @@
-/* main.c - program entry: terminal menu, or web server with --serve */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

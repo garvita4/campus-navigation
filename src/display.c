@@ -1,4 +1,3 @@
-/* display.c - terminal output: banner, lists, directions, summary box */
 #include <stdio.h>
 #include "campus.h"
 #include "utils.h"
