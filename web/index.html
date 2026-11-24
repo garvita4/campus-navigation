@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Navigator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>Campus Navigator</h1>
+  <p>Pick a start and a destination to see the shortest walking route, with distance and directions. Every route is calculated by the C backend.</p>
+</header>
+<main>
+  <section class="card" aria-label="Campus map">
+    <svg id="map" viewBox="0 0 700 450" role="img" aria-label="Campus graph: buildings joined by walkways"></svg>
+    <div class="legend">
+      <span><i></i>Step-free walkway</span>
+      <span><i style="border-top-style:dashed"></i>Stairs</span>
+      <span><i style="border-top-color:var(--bad);border-top-style:dotted"></i>Blocked</span>
+      <span><i style="border-top-color:var(--route)"></i>Your route</span>
+    </div>
+    <p class="note">Tap two buildings to set start and destination. Tap a walkway to block or reopen it.</p>
+  </section>
+
+  <section class="card" aria-live="polite">
+    <div class="row">
+      <div><label for="from">Start</label><select id="from"></select></div>
+      <div><label for="to">Destination</label><select id="to"></select></div>
+    </div>
+    <label for="algo">Method</label>
+    <select id="algo">
+      <option value="dij">Shortest distance (Dijkstra)</option>
+      <option value="bfs">Fewest walkways (BFS)</option>
+    </select>
+    <label class="check"><input type="checkbox" id="acc"> Step-free route only (avoid stairs)</label>
+    <button id="reset" type="button">Reopen all walkways</button>
+    <div id="out"></div>
+  </section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

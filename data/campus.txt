@@ -1,0 +1,36 @@
+# Campus map data
+# N|building name|x|y        (x,y = position on the web map, 700x450 canvas)
+# E|from|to|distance in m|stairs (1 = has stairs, 0 = step-free)
+# NOTE: distances are ESTIMATES - replace them with real measurements.
+# The Library is on the 2nd floor and everything else is on the ground floor,
+# so every walkway that touches the Library has stairs (flag = 1).
+
+N|Gate 1|520|405
+N|Gate 2|270|405
+N|Parking Area|400|325
+N|Reception|330|245
+N|Central Lawn|245|170
+N|Library|125|235
+N|Hostel|565|225
+N|Canteen|630|105
+N|New Building|490|80
+N|Ground|70|115
+N|Small Gate|45|335
+
+E|Gate 1|Parking Area|40|0
+E|Gate 2|Parking Area|40|0
+E|Gate 1|Hostel|90|0
+E|Parking Area|Reception|60|0
+E|Parking Area|Hostel|70|0
+E|Reception|Central Lawn|40|0
+E|Reception|Library|70|1
+E|Central Lawn|Library|50|1
+E|Reception|Hostel|100|0
+E|Hostel|Canteen|60|0
+E|Canteen|New Building|30|0
+E|Hostel|New Building|50|0
+E|Library|Ground|80|1
+E|Gate 2|Ground|120|0
+E|Small Gate|Ground|40|0
+E|Small Gate|Library|60|1
+E|Small Gate|Reception|160|0
